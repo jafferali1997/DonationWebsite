@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block body_block %}
+
+{% if user.is_authenticated %}
+    <ul>
+        {% for donate in request_donation %}
+            {%if donate.approved_donation %}
+                <li>{{ donate }}</li>
+            {% else %}
+                <li><b>Name:</b> {{ donate.Name }}<br>
+                    <b>Purpose:</b> {{ donate.Purpose }}<br>
+                    <b>CNIC:</b> {{ donate.CNIC }}<br>
+                    <b>Address:</b> {{ donate.Address }}<br>
+                    <b>Email:</b> {{ donate.Email }}<br>
+                    <b>Description:</b>{{ donate.Description }}</li>
+
+                <a class="btn btn-primary" href="{% url 'request_approve' pk=donate.pk %}">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </a>
+                <a class="btn btn-primary" href="{% url 'request_remove' pk=donate.pk %}">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+{% endblock %}

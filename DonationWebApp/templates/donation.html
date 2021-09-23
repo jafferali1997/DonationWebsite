@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% block body_block %}
+
+<h1>Please Add your donation here:</h1>
+<form method="POST" enctype="multipart/form-data" style="color: Gray;">
+    {% csrf_token %}
+    {% bootstrap_form donation %}
+    
+    <input type="submit", class="btn btn-primary", value="Submit">
+
+</form>
+
+<h1 style="text-align: center;">Payment Methods</h1>
+<div class="payment">
+    <img style="margin-left:80px" src="{% static "images/easypaisa.jpg" %}" />
+    <img style="margin:0 80px" src="{% static "images/jazz-cash-logo.png" %}" />
+    <img style="margin-right:40px" src="{% static "images/hbl.png" %}" />
+    <img style="margin-right:40px;" src="{% static 'images/Bar.png'%}" height=10px width=10px/>
+</div>
+<br><span style="font-size:7px; padding-left:780px">Wallet Address:</span> <br><span style="font-size:7px; padding-left:780px">1JTYAUabJAjNqPtEmxY77EydYKEp4jwQPJ</span>
+<br><br>
+<div class="payment">
+    <p style="flex:0.5; text-align: center; margin-left:60px; font-size:17px;"> Share these pages: </i> </p> <i class="fa fa-facebook-official" style="flex:0.1; font-size:17px"></i> <i class="fa fa-instagram" style="flex:0.1; font-size:17px"></i> <i class="fa fa-twitter" style="flex:0.1; font-size:17px"></i>
+    
+</div>
+{% endblock %}

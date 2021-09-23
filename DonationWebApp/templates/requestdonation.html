@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block body_block %}
+
+<h1>Request for donation here:</h1>
+<form method="POST" enctype="multipart/form-data" style="color: Gray;">
+    {% csrf_token %}
+    {% bootstrap_form reqdonation %}
+    <input type="checkbox" onchange="document.getElementById('sendNewSms').disabled = !this.checked;" name="use_stages" value="use_stages">I agree to the <a href="{% url 'term' %}">terms and conditions</a></input>
+    <br><br><input type="submit", name="sendNewSms"  id="sendNewSms" class="btn btn-primary", value="Submit">
+
+</form>
+
+{% endblock %}

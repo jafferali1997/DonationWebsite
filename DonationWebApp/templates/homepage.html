@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load multifor %}
+{% block body_block %}
+
+<div style="margin: -45px -18px; width:1350px; height:600px; background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url('{% static 'images/back.jpeg' %}'); background-repeat: no-repeat; background-size: 1400px 700px;" >
+    <h1 style="padding-top:200px; padding-left:370px; color:white; font-size:50px;">Where the smart donation</h1>
+    <h1 style=" padding-left:400px; color:white; font-size:50px;">community responded</h1>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<h1 style="padding-left:470px"><b>Make Your Donation</b></h1><br>
+<div class='collection-item'>
+    {% for donations in request_donation; pic in pic_list %}
+    
+        {% if pic == '1' %}
+        
+            <div class='image' style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url('{% static 'images/1.jpg' %}')">
+                {% if donations.approved_donation %}
+                    <span>{{donations}} <br><p>{{donations.Contact_Number}}</p></span>
+                    
+                {% endif %}
+                <a class="btn btn-primary custom-button" href="{% url 'donation' %}">Donation</a>
+            </div>
+        
+        
+        {% elif pic == '2' %}
+       
+            
+            <div class='image' style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url('{% static 'images/2.jpg' %}')">
+                {% if donations.approved_donation %}
+                    <span >{{donations}}<br><p>{{donations.Contact_Number}}</p></span>
+                {% endif %}
+                <a class="btn btn-primary custom-button" href="{% url 'donation' %}">Donation</a>
+            </div>
+            
+        
+        {% elif pic == '3' %}
+        
+            
+            <div class='image' style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url('{% static 'images/3.jpg' %}')">
+                {% if donations.approved_donation %}
+                    <span >{{donations}}<br><p>{{donations.Contact_Number}}</p></span>
+                {% endif %}
+                <a class="btn btn-primary custom-button" href="{% url 'donation' %}">Donation</a>
+            </div>
+        {% endif %}
+        
+    {% endfor %}
+</div>
+
+<div class='collection-item'>
+    {% for dona in do_it; pi in pic_list %}
+
+
+        {% if pi == '4' %}
+        
+            
+            <div class='image' style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url('{% static 'images/4.jpg' %}')">
+                {% if dona.approved_donation %}
+                    <span >{{dona}}<br><p>{{dona.Contact_Number}}</p></span>
+                {% endif %}
+                <a class="btn btn-primary custom-button" href="{% url 'donation' %}">Donation</a>
+            </div>
+            
+        
+        {% elif pi == '5' %}
+        
+            
+            <div class='image' style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ),url('{% static 'images/5.jpg' %}');">
+                {% if dona.approved_donation %}
+                    <span >{{dona}}<br><p>{{dona.Contact_Number}}</p></span>
+                {% endif %}
+                <a class="btn btn-primary custom-button" href="{% url 'donation' %}">Donation</a>
+            </div>
+            
+        
+
+        {% elif pi == '6' %}
+        
+            
+                <div class='image' style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('{% static 'images/6.jpg' %}')">
+                    {% if dona.approved_donation %}
+                        <span >{{dona}}<br><p>{{dona.Contact_Number}}</p></span>
+                    {% endif %}
+                    <a class="btn btn-primary custom-button" href="{% url 'donation' %}">Donation</a>
+                </div>
+            </div>
+        
+        {% endif %}
+        
+    {% endfor %}
+</div>
+
+
+
+{% if alert %}
+    <div id="notification_container" style="background-color: white;">
+        <span><b>{{alert.Name}} has donated Rs. {{alert.Amount}}</b></span>
+    </div>
+{% endif %}
+
+{% endblock %}
